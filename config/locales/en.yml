@@ -1,0 +1,51 @@
+---
+en:
+  spree:
+    available_parts: Available parts
+    can_be_part: Can be part
+    individual_sale: Individual sale
+    no_variants: No variants
+    parts: Parts
+    assembly_cannot_be_part: assembly can't be part
+    product_bundles: Product Bundles
+    parts_included: Parts included
+    part_of_bundle: 'Part of bundle %{sku}'
+    selected_quantity_not_available: Selected quantity not available
+    user_selectable: User Selectable
+
+  next: "Next"
+  previous: "Previous"
+  name: "Name"
+  body: "Body"
+  link_url: "Link URL"
+  image: "Image"
+  preview: "Preview"
+  image_file_name: "Image file name"
+  published: "Published"
+  position: "Position"
+  y: "Yes"
+  n: "No"
+
+  activerecord:
+    models:
+      spree/slide: "Slide"
+
+  spree_slider:
+    config_name: "Spree Slider"
+    config_description: "Manage Spree Slider contents"
+    title: "Slides"
+    new_slide: "New Slide"
+    editing_slide: "Editing Slide"
+    back_to_slides: "Back to Slides"
+    placeholder_name: "Leave blank to use product name"
+    placeholder_link_url: "Leave blank to use product url"
+    image_tip: "Default first product image"
+
+  spree_slider_locations:
+    config_name: "Spree Slider Locations"
+    config_description: "Manage Spree Slider Locations"
+    title: "Slider Locations"
+    new_location: "New Location"
+    editing_location: "Editing Location"
+    back_to_locations: "Back to Locations"
+

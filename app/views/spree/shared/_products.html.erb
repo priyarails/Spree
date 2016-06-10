@@ -1,0 +1,86 @@
+<%
+  paginated_products = @searcher.retrieve_products if params.key?(:keywords)
+  paginated_products ||= products
+%>
+
+<% content_for :head do %>
+  <% if paginated_products.respond_to?(:num_pages) %>
+    <%= rel_next_prev_link_tags paginated_products %>
+  <% end %>
+<% end %>
+
+<div data-hook="products_search_results_heading">
+  <% if products.empty? %>
+    <div data-hook="products_search_results_heading_no_results_found">
+      <%= Spree.t(:no_products_found) %>
+    </div>
+  <% elsif params.key?(:keywords) %>
+    <div data-hook="products_search_results_heading_results_found">
+      <h6 class="search-results-title"><%= Spree.t(:search_results, keywords: h(params[:keywords])) %></h6>
+    </div>
+  <% end %>
+</div>
+
+
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">     
+    <meta name="description" content="Blueprint: A basic responsive product grid layout with comparison functionality" />
+    <meta name="keywords" content="blueprint, template, html, css, javascript, grid, layout, effect, product comparison" />
+    <meta name="author" content="Codrops" />
+    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="stylesheet" type="text/css" href="/assets/spree/frontend/demo.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/spree/frontend/component.css" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <!-- Modernizr is used for flexbox fallback -->
+    <script src="/assets/spree/frontend/modernizr.custom.js"></script>
+  </head>
+  <body>
+  <% if products.any? %>
+    <!-- Compare basket -->
+    <div class="compare-basket">
+      <button class="action action--button action--compare"><i class="fa fa-check"></i><span class="action__text">Compare</span></button>
+    </div>
+    <!-- Main view -->
+    <div class="view">
+      <!-- Blueprint header -->
+            <!-- Product grid -->
+      <section class="grid" id="products">
+        <!-- Products -->
+        <% products.each do |product| %> 
+              <% url = spree.product_url(product, taxon_id: @taxon.try(:id)) %>
+      
+        <div class="product">
+          <div class="product__info">        
+          <%= link_to small_image(product, class: "product__image"), url, itemprop: 'url' %>
+          <%= link_to truncate(product.name, length: 50), url, class: 'info', itemprop: "name", title: product.name %>
+           <span class="product__year extra highlight" style="color:white"><%= product.price %></span>
+          <span class="product__year extra highlight" style="color:white"><%= product.description %></span>
+            
+            </div>
+
+
+
+              <label class="action action--compare-add"><input class="check-hidden" type="checkbox" /><i class="fa fa-plus"></i><i class="fa fa-check"></i><span class="action__text action__text--invisible">Add to compare</span></label>      
+             </div>
+       <% end %>
+        </section>
+        </div><!-- /view -->
+    <!-- product compare wrapper -->
+    <section class="compare">
+      <button class="action action--close"><i class="fa fa-remove"></i><span class="action__text action__text--invisible">Close comparison overlay</span></button>
+    </section>
+    <script src="/assets/spree/frontend/classie.js"></script>
+    <script src="/assets/spree/frontend/main.js"></script>
+
+
+<% end %>
+
+<% if paginated_products.respond_to?(:num_pages) %>
+  <%= paginate paginated_products, theme: 'twitter-bootstrap-3' %>
+<% end %>
+  </body>
+</html>
