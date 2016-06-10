@@ -48,7 +48,7 @@
     <div class="view">
       <!-- Blueprint header -->
             <!-- Product grid -->
-      <section class="grid" id="products">
+      <section class="grid">
         <!-- Products -->
         <% products.each do |product| %> 
               <% url = spree.product_url(product, taxon_id: @taxon.try(:id)) %>

@@ -8,5 +8,3 @@ jQuery ->
          $.getScript url
         return
       return
-
-
