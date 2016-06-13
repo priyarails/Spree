@@ -1,6 +1,6 @@
 $("#my-products").append("<%= j render(:partial => 'spree/shared/products', :locals => { :products => @products }) %>");
 <% if @products.next_page %>
-  $('.pagination').replaceWith('<%= j paginate @products %>');
+  $('.pagination').replaceWith('<%= j paginate paginated_products %>');
 <% else %>
   $(window).off('scroll');
   $('.pagination').remove();
