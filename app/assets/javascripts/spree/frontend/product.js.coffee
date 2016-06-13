@@ -1,5 +1,4 @@
 jQuery ->
-
   if $('.pagination').size() > 0
    $(window).on 'scroll', ->
        url = $('li.next_page a').attr('href')
