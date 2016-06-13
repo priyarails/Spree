@@ -10,8 +10,7 @@ default: &default
   pool: 5
   username: root
   password: root
-  timeout: 5000
-
+  
 development:
   <<: *default
   database: db/development.sqlite3
